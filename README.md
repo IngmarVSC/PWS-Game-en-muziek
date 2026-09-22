@@ -10,6 +10,8 @@ Doel: simpele game opstellen met genoeg functionaliteit om onderzoek te doen naa
 ### TODO:
 - ~~Obstacles toevoegen~~
 
+- Allow own music to be used
+
 - Player dodge functie implementeren
 
 - Score tracker implementeren
