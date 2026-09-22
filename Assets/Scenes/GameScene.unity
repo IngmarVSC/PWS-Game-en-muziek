@@ -660,7 +660,7 @@ GameObject:
   - component: {fileID: 1589168541}
   m_Layer: 0
   m_Name: RockDeleter
-  m_TagString: Untagged
+  m_TagString: Trigger_DestroyWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

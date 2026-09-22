@@ -4,6 +4,19 @@ public class Rock : MonoBehaviour
 {
     public float speed = 10f;
 
+    public GameObject[] asteroidModels;
+
+    void Start(){
+        if (asteroidModels.Length == 0)
+        {
+            Debug.LogError("No asteroid models assigned to Rock!");
+            return;
+        }
+
+        int randomIndex = Random.Range(0, asteroidModels.Length);
+        asteroidModels[randomIndex].SetActive(true);
+    }
+
     void Update()
     {
         transform.position += Vector3.back * speed * Time.deltaTime;
