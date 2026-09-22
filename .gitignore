@@ -108,3 +108,5 @@ InitTestScene*.unity*
 .DS_Store
 
 *.cubemap
+
+.vscode 
