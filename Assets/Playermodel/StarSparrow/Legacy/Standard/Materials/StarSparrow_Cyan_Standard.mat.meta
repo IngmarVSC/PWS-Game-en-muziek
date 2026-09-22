@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3c2707ed90ceec2469edc02c524d27c3
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 73167
+  packageName: Star Sparrow Modular Spaceship
+  packageVersion: 6.0
+  assetPath: Assets/StarSparrow/Legacy/Standard/Materials/StarSparrow_Cyan_Standard.mat
+  uploadId: 980240
