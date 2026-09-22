@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 90c504fb50dbca84198d06d169746290
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 60072b568d64c40a485e0fc55012dc9f, type: 3}
+AssetOrigin:
+  serializedVersion: 1
+  productId: 73167
+  packageName: Star Sparrow Modular Spaceship
+  packageVersion: 6.0
+  assetPath: Assets/StarSparrow/Shaders/SubGraphs/EbalStudios_Wearout.shadersubgraph
+  uploadId: 980240

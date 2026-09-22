@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 05a9c85da8e9fbe4c93e27f628f8a84a
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 60072b568d64c40a485e0fc55012dc9f, type: 3}
+AssetOrigin:
+  serializedVersion: 1
+  productId: 73167
+  packageName: Star Sparrow Modular Spaceship
+  packageVersion: 6.0
+  assetPath: Assets/StarSparrow/Shaders/SubGraphs/EbalStudios_TriColorAddMultSplit.shadersubgraph
+  uploadId: 980240
