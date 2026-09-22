@@ -7,12 +7,6 @@ public class Rock : MonoBehaviour
     public GameObject[] asteroidModels;
 
     void Start(){
-        if (asteroidModels.Length == 0)
-        {
-            Debug.LogError("No asteroid models assigned to Rock!");
-            return;
-        }
-
         int randomIndex = Random.Range(0, asteroidModels.Length);
         asteroidModels[randomIndex].SetActive(true);
     }

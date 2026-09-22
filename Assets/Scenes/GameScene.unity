@@ -192,7 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   speed: 9
   moveWidth: 6
-  moveHeight: 3
+  moveHeight: 1
 --- !u!1001 &319647941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -473,7 +473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d76257d2c07a74124b1dc84cee13d3a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  maxBankAngle: 35
+  maxBankAngle: 90
   bankSpeed: 6
   maxPitchAngle: 10
   pitchSpeed: 7
