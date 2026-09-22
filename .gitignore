@@ -109,4 +109,4 @@ InitTestScene*.unity*
 
 *.cubemap
 
-.vscode 
+.vscode/ 
