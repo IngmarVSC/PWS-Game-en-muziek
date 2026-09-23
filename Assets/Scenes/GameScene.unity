@@ -191,10 +191,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   speed: 9
-  moveWidth: 6
+  moveWidth: 6.5
   minHeight: -1
   maxHeight: 5
-  acceleration: 30
+  acceleration: 25
   deceleration: 15
   dodgeDistance: 4
   dodgeDuration: 0.6

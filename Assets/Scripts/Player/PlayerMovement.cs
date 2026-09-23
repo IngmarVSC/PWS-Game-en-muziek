@@ -4,11 +4,11 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 8f;
-    public float moveWidth = 4.5f;
+    public float moveWidth = 6.5f;
     public float minHeight = -1f;   // how far below the start position
-    public float maxHeight = 5f;    // how far above the start position
+    public float maxHeight = 5.5f;    // how far above the start position
 
-    public float acceleration = 30f;   // how fast you speed up
+    public float acceleration = 25f;   // how fast you speed up
     public float deceleration = 12f;   // lower = longer glide after release
 
     [Header("Dodge")]
