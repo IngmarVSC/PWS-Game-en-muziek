@@ -192,7 +192,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   speed: 9
   moveWidth: 4.5
-  moveHeight: 2.5
+  minHeight: -1
+  maxHeight: 5
+  acceleration: 30
+  deceleration: 15
 --- !u!1 &93332670
 GameObject:
   m_ObjectHideFlags: 0
