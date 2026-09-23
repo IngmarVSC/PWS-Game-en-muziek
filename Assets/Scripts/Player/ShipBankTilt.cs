@@ -9,6 +9,25 @@ public class ShipBankTilt : MonoBehaviour
     public float maxPitchAngle = 10f;
     public float pitchSpeed = 10f;
 
+    private Quaternion currentTilt;   // the normal bank/pitch, kept separate from the roll
+    private bool isRolling;
+    private float rollTimer;
+    private float rollDuration;
+    private float rollDirection;
+
+    void Start()
+    {
+        currentTilt = transform.localRotation;
+    }
+
+    public void StartBarrelRoll(float direction, float duration)
+    {
+        isRolling = true;
+        rollTimer = 0f;
+        rollDuration = duration;
+        rollDirection = direction;
+    }
+
     void Update()
     {
         float horizontal = 0f;
@@ -33,10 +52,18 @@ public class ShipBankTilt : MonoBehaviour
             horizontal * -maxBankAngle
         );
 
-        transform.localRotation = Quaternion.Slerp(
-            transform.localRotation,
-            targetRotation,
-            bankSpeed * Time.deltaTime
-        );
+        currentTilt = Quaternion.Slerp(currentTilt, targetRotation, bankSpeed * Time.deltaTime);
+
+        // Barrel roll layered on top of the tilt
+        float rollAngle = 0f;
+        if (isRolling)
+        {
+            rollTimer += Time.deltaTime;
+            float t = Mathf.Clamp01(rollTimer / rollDuration);
+            rollAngle = Mathf.SmoothStep(0f, 1f, t) * 360f * -rollDirection;
+            if (t >= 1f) isRolling = false;
+        }
+
+        transform.localRotation = currentTilt * Quaternion.Euler(0f, 0f, rollAngle);
     }
 }
