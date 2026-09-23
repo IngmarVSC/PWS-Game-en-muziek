@@ -11,11 +11,13 @@ public class RockSpawner : MonoBehaviour
 
     public float spawnInterval = 2f;
 
+    // repeatedly spawns new rock instances
     void Start()
     {
         InvokeRepeating(nameof(SpawnRock), 1f, spawnInterval);
     }
 
+    // random rock position spawning
     void SpawnRock()
     {
         float randomX = Random.Range(-spawnWidth, spawnWidth);

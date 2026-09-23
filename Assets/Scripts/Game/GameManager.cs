@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        // Game starts paused until the player presses START
+        // game starts paused until the player presses START
         Time.timeScale = 0f;
 
         startMenuPanel.SetActive(true);
@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
     }
 
+    // restarting game just resets the gamescene
     public void RestartGame()
     {
         Time.timeScale = 1f;
