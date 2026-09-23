@@ -33,6 +33,7 @@ public class ShipBankTilt : MonoBehaviour
         float horizontal = 0f;
         float vertical = 0f;
 
+        // ship tilting logic
         if (Keyboard.current != null)
         {
             if (Keyboard.current.aKey.isPressed)
@@ -54,7 +55,7 @@ public class ShipBankTilt : MonoBehaviour
 
         currentTilt = Quaternion.Slerp(currentTilt, targetRotation, bankSpeed * Time.deltaTime);
 
-        // Barrel roll layered on top of the tilt
+        // barrel roll layered on top of the tilt
         float rollAngle = 0f;
         if (isRolling)
         {

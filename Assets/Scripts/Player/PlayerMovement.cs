@@ -5,24 +5,27 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed = 8f;
     public float moveWidth = 6.5f;
-    public float minHeight = -1f;   // how far below the start position
-    public float maxHeight = 5.5f;    // how far above the start position
+    public float minHeight = -1f; // how far below the start position
+    public float maxHeight = 5.5f;  // how far above the start position
 
-    public float acceleration = 25f;   // how fast you speed up
-    public float deceleration = 12f;   // lower = longer glide after release
+    public float acceleration = 25f; // how fast you speed up
+    public float deceleration = 12f; // lower = longer glide after release
 
+    // variables for dodge function
     [Header("Dodge")]
-    public float dodgeDistance = 4f;        // roughly how far the dash travels sideways
-    public float dodgeDuration = 0.35f;     // also the length of the barrel roll
+    public float dodgeDistance = 4f; // roughly how far the dash travels sideways
+    public float dodgeDuration = 0.35f; // also the length of the barrel roll
     public float dodgeCooldown = 0.8f;
     public bool invulnerableWhileDodging = true;
-    public ShipBankTilt tilt;               // auto-found if left empty
+    public ShipBankTilt tilt;   
 
     private CharacterController controller;
     private Vector3 localOffset;
     private Vector2 velocity;
 
-    private bool isDodging;
+    // dodging flag for preventing dodging mid-dodge (and possible immunity)
+    // immunity is kind of cheesy so probably not
+    private bool isDodging; 
     private float dodgeTimer;
     private float dodgeCooldownTimer;
     private float dodgeDir;
@@ -31,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        if (tilt == null) tilt = GetComponentInChildren<ShipBankTilt>();
+        if (tilt == null) tilt = GetComponentInChildren<ShipBankTilt>(); // auto-find if left empty
     }
 
     void Update()
@@ -40,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
         float vertical = 0f;
         bool dodgePressed = false;
 
+        // player movement logic
         if (Keyboard.current != null)
         {
             if (Keyboard.current.aKey.isPressed)
@@ -57,21 +61,23 @@ public class PlayerMovement : MonoBehaviour
 
         if (horizontal != 0f) lastHorizontal = horizontal;
 
-        // Dodge start
+        // dodge start
         dodgeCooldownTimer -= Time.deltaTime;
+
+        // ? operator is just shortened syntax for if-else. kind of cool but maybe hard to read
         if (dodgePressed && !isDodging && dodgeCooldownTimer <= 0f)
         {
             StartDodge(horizontal != 0f ? horizontal : lastHorizontal);
         }
 
-        // Normal movement
+        // regular movement
         Vector2 targetVelocity = new Vector2(horizontal, vertical) * speed;
         
         float rate = (horizontal == 0f && vertical == 0f) ? deceleration : acceleration;
         velocity = Vector2.MoveTowards(velocity, targetVelocity, rate * Time.deltaTime);
 
-        // Dodge is a boost added on top of normal movement, not a replacement.
-        // It starts at 2x average speed and eases to 0, so the total extra distance = dodgeDistance.
+        // dodge is a boost added on top of normal movement, not a replacement.
+        // it starts at 2x average speed and eases to 0, so the total extra distance = dodgeDistance.
         float dodgeVelocityX = 0f;
         if (isDodging)
         {
@@ -95,7 +101,8 @@ public class PlayerMovement : MonoBehaviour
         candidate.x = Mathf.Clamp(candidate.x, -moveWidth, moveWidth);
         candidate.y = Mathf.Clamp(candidate.y, minHeight, maxHeight);
 
-        // Stop building up speed against the edges of the box
+        // stop building up speed against the edges of the box. 
+        // was cool tech before, but also a bug
         if (candidate.x == -moveWidth || candidate.x == moveWidth) velocity.x = 0f;
         if (candidate.y == minHeight || candidate.y == maxHeight) velocity.y = 0f;
 
@@ -105,6 +112,7 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(delta);
     }
 
+    // dodge function
     void StartDodge(float direction)
     {
         isDodging = true;
@@ -114,6 +122,7 @@ public class PlayerMovement : MonoBehaviour
         if (tilt != null) tilt.StartBarrelRoll(direction, dodgeDuration);
     }
 
+    // checks hits with rocks and goes into game-over screen
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (isDodging && invulnerableWhileDodging) return;
