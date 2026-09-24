@@ -624,9 +624,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RockSpawner
   rockPrefab: {fileID: 3125081783739141816, guid: 8d722f29bd7714550a358b094e03e10b, type: 3}
   spawnDistance: 200
-  spawnWidth: 10
-  spawnHeight: 4
-  spawnInterval: 0.5
+  spawnWidth: 15
+  spawnHeight: 7
+  spawnInterval: 0.3
 --- !u!4 &480648362
 Transform:
   m_ObjectHideFlags: 0
