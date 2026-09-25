@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject startMenuPanel;
     public GameObject gameOverPanel;
+    public GameObject gameControlsPanel;
 
     void Start()
     {
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
 
         startMenuPanel.SetActive(true);
         gameOverPanel.SetActive(false);
+        gameControlsPanel.SetActive(false);
     }
 
     public void StartGame()
@@ -39,5 +41,13 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(
             SceneManager.GetActiveScene().buildIndex
         );
+    }
+
+    public void ShowControls()
+    {
+        Time.timeScale = 0f;
+
+        startMenuPanel.SetActive(false);
+        gameControlsPanel.SetActive(true);
     }
 }
