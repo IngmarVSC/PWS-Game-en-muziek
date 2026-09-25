@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 8f;
@@ -18,7 +19,10 @@ public class PlayerMovement : MonoBehaviour
     public bool invulnerableWhileDodging = true;
     public ShipBankTilt tilt;   
 
-    private CharacterController controller;
+
+    private Rigidbody rb;
+
+    private Vector3 startPosition;
     private Vector3 localOffset;
     private Vector2 velocity;
 
@@ -32,8 +36,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        controller = GetComponent<CharacterController>();
-        if (tilt == null) tilt = GetComponentInChildren<ShipBankTilt>(); // auto-find if left empty
+        rb = GetComponent<Rigidbody>();
+        startPosition = rb.position;
+        localOffset = Vector3.zero;
+
+        if (tilt == null) 
+          tilt = GetComponentInChildren<ShipBankTilt>(); // auto-find if left empty
     }
 
     void Update()
@@ -105,10 +113,10 @@ public class PlayerMovement : MonoBehaviour
         if (candidate.x == -moveWidth || candidate.x == moveWidth) velocity.x = 0f;
         if (candidate.y == minHeight || candidate.y == maxHeight) velocity.y = 0f;
 
-        Vector3 delta = candidate - localOffset;
+        
         localOffset = candidate;
 
-        controller.Move(delta);
+        rb.MovePosition(startPosition + localOffset);
     }
 
     // dodge function
@@ -122,11 +130,12 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // checks hits with rocks and goes into game-over screen
-    void OnControllerColliderHit(ControllerColliderHit hit)
+    void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("PLAYER COLLIDED WITH: " + collision.gameObject.name);
         if (isDodging && invulnerableWhileDodging) return;
 
-        if (hit.gameObject.CompareTag("Rock"))
+        if (collision.gameObject.CompareTag("Rock"))
         {
             FindAnyObjectByType<GameManager>().GameOver();
         }
