@@ -196,7 +196,7 @@ MonoBehaviour:
   maxHeight: 5
   acceleration: 25
   deceleration: 15
-  dodgeDistance: 4
+  dodgeDistance: 5
   dodgeDuration: 0.6
   dodgeCooldown: 1.5
   invulnerableWhileDodging: 0

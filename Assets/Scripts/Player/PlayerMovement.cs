@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
     public float deceleration = 12f; // lower = longer glide after release
 
     // variables for dodge function
-    [Header("Dodge")]
     public float dodgeDistance = 4f; // roughly how far the dash travels sideways
     public float dodgeDuration = 0.35f; // also the length of the barrel roll
     public float dodgeCooldown = 0.8f;
