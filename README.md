@@ -7,6 +7,13 @@ Doel: simpele game opstellen met genoeg functionaliteit om onderzoek te doen naa
 
 -Stats logger functionaliteit om verschillende statistieken van spelers bij te houden
 
+## Controls
+
+
+
+
+## In-game images
+
 ### TODO:
 - ~~Obstacles toevoegen~~
 
