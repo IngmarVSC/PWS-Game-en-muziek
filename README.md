@@ -20,12 +20,12 @@ Doel: simpele game opstellen met genoeg functionaliteit om onderzoek te doen naa
 ### TODO:
 - ~~Obstacles toevoegen~~
 
-- Add game difficulty scaler
+- ~~Add game difficulty scaler~~ (kinda)
 
 - Muziek handler voor eigen tracks
 
 - ~~Player dodge functie implementeren~~
 
-- Score tracker implementeren
+- ~~Score tracker implementeren~~ (also kinda)
 
 - (mogelijk? -- Python script schrijven dat gelogde stats visualiseert)
