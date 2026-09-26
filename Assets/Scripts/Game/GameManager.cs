@@ -8,8 +8,6 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverPanel;
     public GameObject gameControlsPanel;
 
-    
-
     public float score;
     public float survivalTime;
 
@@ -25,8 +23,6 @@ public class GameManager : MonoBehaviour
         gamePlayPanel.SetActive(false);
         gameOverPanel.SetActive(false);
         gameControlsPanel.SetActive(false);
-
-        
 
         score = 0f;
         survivalTime = 0f;
@@ -53,7 +49,7 @@ public class GameManager : MonoBehaviour
     {   
 
         startMenuPanel.SetActive(false);
-        
+
         gamePlayPanel.SetActive(true);
 
         gameRunning = true;
@@ -73,7 +69,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("GAME OVER");
         Debug.Log("Score: " + (Mathf.FloorToInt(score) -10)); // -10 because game doesnt actually start until after 10sec
         Debug.Log("Survival time: " + (survivalTime - 10));
-
 
         gameOverPanel.SetActive(true);
 

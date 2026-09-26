@@ -53,14 +53,14 @@ public class PlayerMovement : MonoBehaviour
         // player movement logic
         if (Keyboard.current != null)
         {
-            if (Keyboard.current.aKey.isPressed)
+            if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
                 horizontal = -1f;
-            else if (Keyboard.current.dKey.isPressed)
+            else if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
                 horizontal = 1f;
 
-            if (Keyboard.current.sKey.isPressed)
+            if (Keyboard.current.sKey.isPressed || Keyboard.current.downArrowKey.isPressed)
                 vertical = -1f;
-            else if (Keyboard.current.wKey.isPressed)
+            else if (Keyboard.current.wKey.isPressed || Keyboard.current.upArrowKey.isPressed)
                 vertical = 1f;
 
             dodgePressed = Keyboard.current.spaceKey.wasPressedThisFrame;
