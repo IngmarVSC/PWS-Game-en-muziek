@@ -132,12 +132,16 @@ public class PlayerMovement : MonoBehaviour
     // checks hits with rocks and goes into game-over screen
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("PLAYER COLLIDED WITH: " + collision.gameObject.name);
+        GameObject otherObject = collision.gameObject;
+        if (otherObject == null) return;
+
+        Debug.Log("PLAYER COLLIDED WITH: " + otherObject.name);
         if (isDodging && invulnerableWhileDodging) return;
 
-        if (collision.gameObject.CompareTag("Rock"))
+        if (otherObject.CompareTag("Rock"))
         {
-            FindAnyObjectByType<GameManager>().GameOver();
+            GameManager gameManager = FindAnyObjectByType<GameManager>();
+            if (gameManager != null) gameManager.GameOver();
         }
     }
 }
