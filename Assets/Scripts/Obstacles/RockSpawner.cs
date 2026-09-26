@@ -5,16 +5,43 @@ public class RockSpawner : MonoBehaviour
     public GameObject rockPrefab;
 
     public float spawnDistance = 40f;
-
     public float spawnWidth = 4.5f;
     public float spawnHeight = 2.5f;
-
     public float spawnInterval = 2f;
+
+    public int initialRockCount = 35;
 
     // repeatedly spawns new rock instances
     void Start()
     {
-        InvokeRepeating(nameof(SpawnRock), 1f, spawnInterval);
+        SpawnInitialField();
+
+        InvokeRepeating(
+            nameof(SpawnRock), 1f, spawnInterval);
+    }   
+
+    void SpawnInitialField()
+    {   
+        // instantly spawn a few rocks
+        for (int i = 0; i < initialRockCount; i++)
+        {
+            float randomX = Random.Range(-spawnWidth, spawnWidth);
+            float randomY = Random.Range(-spawnHeight, spawnHeight);
+
+            // Spread rocks throughout the entire depth
+            float randomZ = Random.Range(40f, spawnDistance);
+
+            Vector3 spawnPosition = new Vector3(
+                randomX,
+                randomY,
+                randomZ
+            );
+
+            Instantiate(
+                rockPrefab,
+                spawnPosition,
+                Quaternion.identity);
+            }
     }
 
     // random rock position spawning
@@ -26,10 +53,8 @@ public class RockSpawner : MonoBehaviour
         Vector3 spawnPosition = new Vector3(
             randomX,
             randomY,
-            spawnDistance
-        );
+            spawnDistance);
 
         Instantiate(rockPrefab, spawnPosition, Quaternion.identity);
     }
-
 }
