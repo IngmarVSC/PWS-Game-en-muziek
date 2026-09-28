@@ -4,7 +4,7 @@ public class RockSpawner : MonoBehaviour
 {
     public GameObject rockPrefab;
     
-    public float spawnDistance = 40f;
+    public float spawnDistance = 80f;
     public float spawnWidth = 4.5f;
     public float spawnHeight = 2.5f;
     public float spawnInterval = 2f;
@@ -44,7 +44,7 @@ public class RockSpawner : MonoBehaviour
             float randomY = Random.Range(-spawnHeight, spawnHeight);
 
             // Spread rocks throughout the entire depth
-            float randomZ = Random.Range(10f, spawnDistance);
+            float randomZ = Random.Range(50f, spawnDistance);
 
             Vector3 spawnPosition = new Vector3(
                 randomX,
