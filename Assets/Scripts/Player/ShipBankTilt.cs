@@ -15,6 +15,11 @@ public class ShipBankTilt : MonoBehaviour
     private float rollDuration;
     private float rollDirection;
 
+
+    // capsule colliders of sides of spaceship
+    public GameObject colliderWingtipRight;
+    public GameObject colliderWingtipLeft;
+
     void Start()
     {
         currentTilt = transform.localRotation;
@@ -26,7 +31,13 @@ public class ShipBankTilt : MonoBehaviour
         rollTimer = 0f;
         rollDuration = duration;
         rollDirection = direction;
+
+        // ease the hitbox while dodging
+        colliderWingtipRight.SetActive(false);
+        colliderWingtipLeft.SetActive(false);
+
     }
+
 
     void Update()
     {
@@ -54,6 +65,13 @@ public class ShipBankTilt : MonoBehaviour
         );
 
         currentTilt = Quaternion.Slerp(currentTilt, targetRotation, bankSpeed * Time.deltaTime);
+
+        // returns to regular hitbox after dodging
+        if(!isRolling){
+            colliderWingtipRight.SetActive(true);
+            colliderWingtipLeft.SetActive(true);
+        }
+
 
         // barrel roll layered on top of the tilt
         float rollAngle = 0f;

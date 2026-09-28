@@ -67,7 +67,7 @@ public class Rock : MonoBehaviour
                 maxSpeed
             );
 
-            timer -= timeInterval;
+            timer = 0; 
         }
         Debug.Log("CURRENT ROCK SPEED " + initialSpeed);
     }

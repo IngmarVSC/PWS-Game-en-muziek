@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public float survivalTime;
 
     private bool gameRunning;
-    private bool gameOver;
+    private bool gameOver; 
 
     void Start()
     {

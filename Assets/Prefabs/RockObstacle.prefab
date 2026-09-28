@@ -132,11 +132,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac03171948804ff7aa950fb7d9fb0fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  initialSpeed: 20
+  initialSpeed: 30
   timer: 0
   speedMult: 1.15
-  timeInterval: 10
-  maxSpeed: 60
+  timeInterval: 5
+  maxSpeed: 100
   asteroidModels:
   - {fileID: 27043304549610046}
   - {fileID: 422729880300112357}
