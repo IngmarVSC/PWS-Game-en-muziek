@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
     public GameObject startMenuPanel;
     public GameObject gameOverPanel;
     public GameObject gameControlsPanel;
+    public GameObject player;
+
+    public RockSpawner rockSpawner;
 
     public float score;
     public float survivalTime;
@@ -20,6 +23,8 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
 
         startMenuPanel.SetActive(true);
+        player.SetActive(false);
+
         gamePlayPanel.SetActive(false);
         gameOverPanel.SetActive(false);
         gameControlsPanel.SetActive(false);
@@ -51,11 +56,14 @@ public class GameManager : MonoBehaviour
         startMenuPanel.SetActive(false);
 
         gamePlayPanel.SetActive(true);
+        player.SetActive(true);
 
         gameRunning = true;
         gameOver = false;
 
         Time.timeScale = 1f;
+
+        rockSpawner.StartSpawning();
     }
 
     public void GameOver()
@@ -79,6 +87,7 @@ public class GameManager : MonoBehaviour
     {
         gameControlsPanel.SetActive(false);
         startMenuPanel.SetActive(true);
+        player.SetActive(false);
     }
 
     public void ShowControls()
@@ -87,6 +96,9 @@ public class GameManager : MonoBehaviour
 
         startMenuPanel.SetActive(false);
         gameControlsPanel.SetActive(true);
+
+        // hide player during controls screen
+        player.SetActive(false);
     }
 
     // restarting game just resets the gamescene

@@ -3,7 +3,7 @@ using UnityEngine;
 public class RockSpawner : MonoBehaviour
 {
     public GameObject rockPrefab;
-
+    
     public float spawnDistance = 40f;
     public float spawnWidth = 4.5f;
     public float spawnHeight = 2.5f;
@@ -11,14 +11,29 @@ public class RockSpawner : MonoBehaviour
 
     public int initialRockCount = 35;
 
+    private bool isSpawning = false;
+
     // repeatedly spawns new rock instances
     void Start()
+    {   
+    
+    }   
+
+    public void StartSpawning()
     {
+        if (isSpawning)
+            return;
+
+        isSpawning = true;
+
         SpawnInitialField();
 
         InvokeRepeating(
-            nameof(SpawnRock), 1f, spawnInterval);
-    }   
+            nameof(SpawnRock),
+            1f,
+            spawnInterval
+        );
+    }
 
     void SpawnInitialField()
     {   
@@ -29,7 +44,7 @@ public class RockSpawner : MonoBehaviour
             float randomY = Random.Range(-spawnHeight, spawnHeight);
 
             // Spread rocks throughout the entire depth
-            float randomZ = Random.Range(40f, spawnDistance);
+            float randomZ = Random.Range(10f, spawnDistance);
 
             Vector3 spawnPosition = new Vector3(
                 randomX,
