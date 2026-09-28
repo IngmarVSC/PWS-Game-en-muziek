@@ -12,7 +12,6 @@ Doel: simpele game opstellen met genoeg functionaliteit om onderzoek te doen naa
 
 ## In-game images
 ![App Screenshot](Assets/Devlog_pics/start_screen2.png)
-
 ![App Screenshot](Assets/Devlog_pics/ingame_screen1.png)
 
 
