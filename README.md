@@ -8,10 +8,10 @@ Doel: simpele game opstellen met genoeg functionaliteit om onderzoek te doen naa
 -Stats logger functionaliteit om verschillende statistieken van spelers bij te houden
 
 ## Controls
-![App Screenshot](Assets/Devlog_pics/controls_screen1.png)
+![App Screenshot](Assets/Devlog_pics/controls_screen2.png)
 
 ## In-game images
-![App Screenshot](Assets/Devlog_pics/start_screen1.png)
+![App Screenshot](Assets/Devlog_pics/ingame_screen2.png)
 
 ![App Screenshot](Assets/Devlog_pics/ingame_screen1.png)
 
