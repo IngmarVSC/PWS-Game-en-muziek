@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
 
     public RockSpawner rockSpawner;
+    public AudioManager audioManager;
 
     public float score;
     public float survivalTime;
@@ -64,6 +65,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
 
         rockSpawner.StartSpawning();
+        audioManager.PlayRandomGameplayMusic();
     }
 
     public void GameOver()
