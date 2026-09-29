@@ -165,15 +165,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ea66568b8694c54b7809fee7c4fd6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  speed: 9
+  speed: 7
   moveWidth: 6.5
   minHeight: -3
-  maxHeight: 5
+  maxHeight: 5.3
   acceleration: 25
   deceleration: 15
-  dodgeDistance: 5
+  dodgeDistance: 6
   dodgeDuration: 0.6
-  dodgeCooldown: 1.4
+  dodgeCooldown: 1.5
   invulnerableWhileDodging: 0
   tilt: {fileID: 0}
 --- !u!54 &50444203
@@ -1302,11 +1302,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RockSpawner
   rockPrefab: {fileID: 3125081783739141816, guid: 8d722f29bd7714550a358b094e03e10b, type: 3}
-  spawnDistance: 200
+  spawnDistance: 300
   spawnWidth: 20
-  spawnHeight: 7
+  spawnHeight: 10
   spawnInterval: 0.05
-  initialRockCount: 30
+  initialRockCount: 70
 --- !u!4 &480648362
 Transform:
   m_ObjectHideFlags: 0
@@ -3167,7 +3167,7 @@ Transform:
   m_GameObject: {fileID: 1589168539}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3788, y: -3.29249, z: -16.53}
+  m_LocalPosition: {x: -0.3788, y: -3.29249, z: -10.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

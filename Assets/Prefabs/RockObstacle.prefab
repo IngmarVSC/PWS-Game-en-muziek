@@ -305,15 +305,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1272764050973406995, guid: 302b539ae365c4cf2a6a1f0f70fae299, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 1272764050973406995, guid: 302b539ae365c4cf2a6a1f0f70fae299, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 1272764050973406995, guid: 302b539ae365c4cf2a6a1f0f70fae299, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1272764050973406995, guid: 302b539ae365c4cf2a6a1f0f70fae299, type: 3}
       propertyPath: m_LocalPosition.x
@@ -403,8 +403,8 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
+  m_Convex: 1
+  m_CookingOptions: -1
   m_Mesh: {fileID: 1586428044625075342, guid: 78499d97230fe0748a3fc15499c77d48, type: 3}
 --- !u!4 &2690597797869320726 stripped
 Transform:
@@ -421,11 +421,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1313654353949842995, guid: 7f3836c9a05ef46cb9447bbc12ab96d0, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1313654353949842995, guid: 7f3836c9a05ef46cb9447bbc12ab96d0, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1313654353949842995, guid: 7f3836c9a05ef46cb9447bbc12ab96d0, type: 3}
       propertyPath: m_LocalScale.z
