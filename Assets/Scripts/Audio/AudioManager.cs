@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
 
     // music files list
     public AudioClip[] gameplayMusic;
+    public AudioClip[] gameplaymusicTracksPlayed;
 
     void Start()
     {
@@ -22,30 +23,16 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
-    public void PlayRandomGameplayMusic()
+    public void PlayGameplayMusic()
     {
         if (gameplayMusic.Length == 0)
             return;
-
-        // play random song -- could maybe be just a loop
-        foreach (AudioClip track in gameplayMusic)
-        {
-            musicSource.clip = track;
-            musicSource.loop = true;
-            musicSource.Play();
-            
-        
-        }
-
-        /*
         
         int randomIndex = Random.Range(0, gameplayMusic.Length);
 
         musicSource.clip = gameplayMusic[randomIndex];
         musicSource.loop = true;
         musicSource.Play(); 
-        
-        */
 
     }
 

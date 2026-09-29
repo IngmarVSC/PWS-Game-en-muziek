@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
 
         rockSpawner.StartSpawning();
-        audioManager.PlayRandomGameplayMusic();
+        audioManager.PlayGameplayMusic();
     }
 
     public void GameOver()
@@ -81,6 +81,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("Survival time: " + survivalTime);
 
         gameOverPanel.SetActive(true);
+
+        audioManager.StopMusic();
 
         Time.timeScale = 0f;
     }

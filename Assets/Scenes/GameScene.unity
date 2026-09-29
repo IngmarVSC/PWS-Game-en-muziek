@@ -1303,9 +1303,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RockSpawner
   rockPrefab: {fileID: 3125081783739141816, guid: 8d722f29bd7714550a358b094e03e10b, type: 3}
   spawnDistance: 200
-  spawnWidth: 10
+  spawnWidth: 20
   spawnHeight: 7
-  spawnInterval: 0.2
+  spawnInterval: 0.05
   initialRockCount: 30
 --- !u!4 &480648362
 Transform:
@@ -1409,7 +1409,7 @@ Transform:
   m_GameObject: {fileID: 518156115}
   serializedVersion: 2
   m_LocalRotation: {x: 0.043619405, y: 0, z: 0, w: 0.9990483}
-  m_LocalPosition: {x: 0, y: 3.97, z: -10}
+  m_LocalPosition: {x: 0, y: 4.11, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2954,6 +2954,7 @@ MonoBehaviour:
   gameplayMusic:
   - {fileID: 8300000, guid: cb99afe3060da4c5ebe362e03d54e7ff, type: 3}
   - {fileID: 8300000, guid: aa96e1b7252954eaa8e50c91221d0f32, type: 3}
+  gameplaymusicTracksPlayed: []
 --- !u!4 &1345144213
 Transform:
   m_ObjectHideFlags: 0
