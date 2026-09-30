@@ -21,7 +21,7 @@ Doel: simpele game opstellen met genoeg functionaliteit om onderzoek te doen naa
 
 - ~~Add game difficulty scaler~~ (kinda)
 
-- Muziek handler voor eigen tracks
+- ~~Muziek handler voor eigen tracks~~
 
 - ~~Player dodge functie implementeren~~
 
