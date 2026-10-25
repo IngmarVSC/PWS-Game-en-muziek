@@ -9,7 +9,11 @@ public class AudioManager : MonoBehaviour
 
     // music files list
     public AudioClip[] gameplayMusic;
-    public AudioClip[] gameplaymusicTracksPlayed;
+    // public AudioClip[] gameplaymusicTracksPlayed;
+    
+
+    public string currentMusicType {get; private set; }
+
 
     void Start()
     {
@@ -34,7 +38,27 @@ public class AudioManager : MonoBehaviour
         musicSource.loop = true;
         musicSource.Play(); 
 
+        switch (randomIndex)
+        {
+            case 0:
+                currentMusicType = "Slow";
+                break;
+
+            case 1:
+                currentMusicType = "Medium";
+                break;
+
+            case 2:
+                currentMusicType = "Fast";
+                break;
+
+            default:
+                currentMusicType = "Unknown";
+                break;
+        }
+
     }
+
 
     public void StopMusic()
     {

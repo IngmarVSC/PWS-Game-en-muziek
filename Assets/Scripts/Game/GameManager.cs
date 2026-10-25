@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverPanel;
     public GameObject gameControlsPanel;
     public GameObject player;
+    
+    public TextMeshProUGUI musicTypeText;
 
     public RockSpawner rockSpawner;
     public AudioManager audioManager;
@@ -80,7 +83,12 @@ public class GameManager : MonoBehaviour
         Debug.Log("Score: " + Mathf.FloorToInt(score)); // -10 because game doesnt actually start until after 10sec
         Debug.Log("Survival time: " + survivalTime);
 
+        musicTypeText.text =
+            "Music type: " + audioManager.currentMusicType;
+
         gameOverPanel.SetActive(true);
+
+
 
         audioManager.StopMusic();
 
