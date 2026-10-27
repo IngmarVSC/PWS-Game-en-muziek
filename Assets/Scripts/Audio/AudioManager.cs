@@ -6,14 +6,12 @@ public class AudioManager : MonoBehaviour
 
     [Header("Music")]
     public AudioClip menuMusic;
-
-    // music files list
     public AudioClip[] gameplayMusic;
-    // public AudioClip[] gameplaymusicTracksPlayed;
-    
 
-    public string currentMusicType {get; private set; }
+    public string currentMusicType { get; private set; }
 
+    private static int[] shuffledIndices;
+    private static int nextTrackIndex = 0;
 
     void Start()
     {
@@ -31,34 +29,64 @@ public class AudioManager : MonoBehaviour
     {
         if (gameplayMusic.Length == 0)
             return;
-        
-        int randomIndex = Random.Range(0, gameplayMusic.Length);
+
+        // create a new shuffled playlist when needed
+        if (shuffledIndices == null ||
+            nextTrackIndex >= shuffledIndices.Length)
+        {
+            ShufflePlaylist();
+        }
+
+        int randomIndex = shuffledIndices[nextTrackIndex];
+        nextTrackIndex++;
 
         musicSource.clip = gameplayMusic[randomIndex];
         musicSource.loop = true;
-        musicSource.Play(); 
+        musicSource.Play();
 
         switch (randomIndex)
         {
             case 0:
-                currentMusicType = "Slow";
+                currentMusicType = "Slow (90 BPM)";
                 break;
 
             case 1:
-                currentMusicType = "Medium";
+                currentMusicType = "Medium (120 BPM)";
                 break;
 
             case 2:
-                currentMusicType = "Fast";
+                currentMusicType = "Fast (150 BPM)";
                 break;
 
             default:
                 currentMusicType = "Unknown";
                 break;
         }
-
     }
 
+    public void ShufflePlaylist()
+    {
+        shuffledIndices = new int[gameplayMusic.Length];
+
+        // fill array with 0, 1, 2...
+        for (int i = 0; i < shuffledIndices.Length; i++)
+        {
+            shuffledIndices[i] = i;
+        }
+
+        // shuffling algorithm
+        // sometimes causes last played item to be played again
+        for (int i = shuffledIndices.Length - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+
+            int temp = shuffledIndices[i];
+            shuffledIndices[i] = shuffledIndices[j];
+            shuffledIndices[j] = temp;
+        }
+
+        nextTrackIndex = 0;
+    }
 
     public void StopMusic()
     {

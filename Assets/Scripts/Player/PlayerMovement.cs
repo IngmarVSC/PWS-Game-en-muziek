@@ -4,7 +4,12 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 8f;
+    public float playerHealth = 120f;
+    public bool isInvulnerable = false;
+    public float invulnerableTimer = 0f;
+    public float invulnerableDuration = 1f;
+
+    public float speed = 8f;    
     public float moveWidth = 6.5f;
     public float minHeight = -1f; // how far below the start position
     public float maxHeight = 5.5f;  // how far above the start position
@@ -19,6 +24,12 @@ public class PlayerMovement : MonoBehaviour
     public bool invulnerableWhileDodging = true;
     public ShipBankTilt tilt;   
 
+    // movement difficulty changing
+    public float initialSpeed = 7f;
+    public float speedMult = 0.9f;
+    public float playerMovementTimer = 0f;
+    public float playerDiffTimeInterval = 1f;
+    public float minSpeed = 4f;
 
     private Rigidbody rb;
 
@@ -49,6 +60,18 @@ public class PlayerMovement : MonoBehaviour
         float horizontal = 0f;
         float vertical = 0f;
         bool dodgePressed = false;
+
+        // player hit detection
+        if (isInvulnerable)
+        {
+            invulnerableTimer += Time.deltaTime;
+
+            if (invulnerableTimer >= invulnerableDuration)
+            {
+                isInvulnerable = false;
+                invulnerableTimer = 0f;
+            }
+        }
 
         // player movement logic
         if (Keyboard.current != null)
@@ -117,6 +140,8 @@ public class PlayerMovement : MonoBehaviour
         localOffset = candidate;
 
         rb.MovePosition(startPosition + localOffset);
+
+        UpdatePlayerSpeed();
     }
 
     // dodge function
@@ -136,12 +161,45 @@ public class PlayerMovement : MonoBehaviour
         if (otherObject == null) return;
 
         Debug.Log("PLAYER COLLIDED WITH: " + otherObject.name);
+
         if (isDodging && invulnerableWhileDodging) return;
 
-        if (otherObject.CompareTag("Rock"))
+        if (otherObject.CompareTag("Rock") && !isInvulnerable)
         {
             GameManager gameManager = FindAnyObjectByType<GameManager>();
-            if (gameManager != null) gameManager.GameOver();
+
+            // Decrease health by 40
+            playerHealth -= 40f;
+
+            // Start invulnerability period
+            isInvulnerable = true;
+            invulnerableTimer = 0f;
+
+            Debug.Log("CURRENT HEALTH: " + playerHealth);
+
+            if (playerHealth <= 0f)
+            {
+                if (gameManager != null)
+                    gameManager.GameOver();
+            }
         }
+    }
+
+    private void UpdatePlayerSpeed()
+    {
+        playerMovementTimer += Time.deltaTime;
+
+        if (playerMovementTimer >= playerDiffTimeInterval)
+        {   
+            // set upper bound to player speed
+            initialSpeed = Mathf.Max(
+                initialSpeed * speedMult,
+                minSpeed); 
+
+            playerMovementTimer = 0; 
+            speed = initialSpeed;
+        }
+        
+        Debug.Log("PLAYER SPEED: " +  initialSpeed);
     }
 }

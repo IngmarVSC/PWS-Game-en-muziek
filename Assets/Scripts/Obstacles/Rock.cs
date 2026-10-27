@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class Rock : MonoBehaviour
 {
-    public float initialSpeed = 20f;
-    public float timer = 0f;
+    public float speed = 30f;
     public float speedMult = 1.2f;
-    public float timeInterval = 10f;
-    public float maxSpeed = 60f;
+    public float diffTimeInterval = 10f;
+    public float maxSpeed = 300f;
 
+    private float timer = 0f;
 
     public GameObject[] asteroidModels;
 
@@ -34,14 +34,16 @@ public class Rock : MonoBehaviour
     }
 
     void Update()
-    {
+    {   
+        UpdateRockSpeed();
+
         // rock moves towards player
-        transform.position += Vector3.back * initialSpeed * Time.deltaTime;
+        transform.position += Vector3.back * speed * Time.deltaTime;
 
         // rotate rock around axis
         transform.Rotate(randomRotationAxis * randomRotationSpeed * Time.deltaTime, Space.Self);
 
-        UpdateSpeed();
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -55,20 +57,16 @@ public class Rock : MonoBehaviour
 
     // really basic difficulty scaler for rock speed
     // TODO: increase rock spawn rate along with rock speed
-    private void UpdateSpeed()
+    private void UpdateRockSpeed()
     {
         timer += Time.deltaTime;
 
-        if (timer >= timeInterval)
-        {   
-            // set upper bound to rock speed
-            initialSpeed = Mathf.Min(
-                initialSpeed * speedMult,
-                maxSpeed
-            );
+        if (timer >= diffTimeInterval)
+        {
+            speed = Mathf.Min(speed * speedMult, maxSpeed);
+            timer -= diffTimeInterval;
 
-            timer = 0; 
+            Debug.Log($"Rock: {gameObject.name}, Speed: {speed}, Max: {maxSpeed}");
         }
-        Debug.Log("CURRENT ROCK SPEED " + initialSpeed);
     }
 }

@@ -9,6 +9,8 @@ public class RockSpawner : MonoBehaviour
     public float spawnHeight = 2.5f;
     public float spawnInterval = 2f;
 
+    public float spawnTimer = 0f;
+    
     public int initialRockCount = 35;
 
     private bool isSpawning = false;
@@ -71,5 +73,10 @@ public class RockSpawner : MonoBehaviour
             spawnDistance);
 
         Instantiate(rockPrefab, spawnPosition, Quaternion.identity);
+    }
+
+    void DecreaseRockSpawnTimer()
+    {
+        
     }
 }
