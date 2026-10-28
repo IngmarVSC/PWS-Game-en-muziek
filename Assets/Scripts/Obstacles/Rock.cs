@@ -4,7 +4,7 @@ public class Rock : MonoBehaviour
 {
     public float speed = 30f;
     public float speedMult = 1.2f;
-    public float diffTimeInterval = 10f;
+    public float diffTimeInterval = 1f;
     public float maxSpeed = 300f;
 
     private float timer = 0f;

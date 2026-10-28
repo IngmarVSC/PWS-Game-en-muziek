@@ -177,10 +177,10 @@ MonoBehaviour:
   invulnerableWhileDodging: 0
   tilt: {fileID: 0}
   initialSpeed: 7
-  speedMult: 0.9
+  speedMult: 0.98
   playerMovementTimer: 0
   playerDiffTimeInterval: 10
-  minSpeed: 4
+  minSpeed: 4.5
 --- !u!54 &50444203
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1311,6 +1311,10 @@ MonoBehaviour:
   spawnWidth: 60
   spawnHeight: 30
   spawnInterval: 0.05
+  spawnTimer: 0
+  spawnTimerInterval: 7
+  spawnIntervalDecrease: 0.01
+  minSpawnInterval: 0.01
   initialRockCount: 20
 --- !u!4 &480648362
 Transform:

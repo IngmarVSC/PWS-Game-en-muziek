@@ -134,8 +134,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   speed: 30
   speedMult: 1.2
-  diffTimeInterval: 5
-  maxSpeed: 300
+  diffTimeInterval: 1
+  maxSpeed: 500
   asteroidModels:
   - {fileID: 27043304549610046}
   - {fileID: 422729880300112357}

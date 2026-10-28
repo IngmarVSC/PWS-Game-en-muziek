@@ -10,16 +10,27 @@ public class RockSpawner : MonoBehaviour
     public float spawnInterval = 2f;
 
     public float spawnTimer = 0f;
-    
-    public int initialRockCount = 35;
+    public float spawnTimerInterval = 5f;
+    public float spawnIntervalDecrease = 0.01f;
+    public float minSpawnInterval = 0.001f;
 
+
+    public int initialRockCount = 35;
     private bool isSpawning = false;
 
-    // repeatedly spawns new rock instances
+    
     void Start()
     {   
     
     }   
+
+    void Update()
+    {
+        if (isSpawning)
+        {   
+            DecreaseRockSpawnTimer();
+        }
+    }
 
     public void StartSpawning()
     {
@@ -77,6 +88,26 @@ public class RockSpawner : MonoBehaviour
 
     void DecreaseRockSpawnTimer()
     {
-        
+    spawnTimer += Time.deltaTime;
+
+    if (spawnTimer >= spawnTimerInterval)
+    {
+        spawnInterval = Mathf.Max(
+            spawnInterval - spawnIntervalDecrease,
+            minSpawnInterval
+        );
+
+        spawnTimer -= spawnTimerInterval;
+
+        // Update the repeating spawn schedule
+        CancelInvoke(nameof(SpawnRock));
+        InvokeRepeating(
+            nameof(SpawnRock),
+            0f,
+            spawnInterval
+        );
+
+        Debug.Log("ROCK SPAWN INTERVAL: " + spawnInterval);
+        }
     }
 }
