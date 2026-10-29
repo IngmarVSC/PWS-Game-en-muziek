@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
     public GameObject gameControlsPanel;
     public GameObject player;
     
-    public TextMeshProUGUI musicTypeText;
+    public TextMeshProUGUI musicTypeText1;
+    
 
     public RockSpawner rockSpawner;
     public AudioManager audioManager;
@@ -69,6 +70,8 @@ public class GameManager : MonoBehaviour
 
         rockSpawner.StartSpawning();
         audioManager.PlayGameplayMusic();
+
+        Debug.Log("CURRENT MUSIC TYPE: " + audioManager.currentMusicType);
     }
 
     public void GameOver()
@@ -80,10 +83,11 @@ public class GameManager : MonoBehaviour
         gameRunning = false;
 
         Debug.Log("GAME OVER");
-        Debug.Log("Score: " + Mathf.FloorToInt(score)); // -10 because game doesnt actually start until after 10sec
+        Debug.Log("Score: " + Mathf.FloorToInt(score)); 
+
         Debug.Log("Survival time: " + survivalTime);
 
-        musicTypeText.text =
+        musicTypeText1.text =
             "Music type: " + audioManager.currentMusicType;
 
         gameOverPanel.SetActive(true);
