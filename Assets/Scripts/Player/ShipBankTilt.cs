@@ -20,6 +20,12 @@ public class ShipBankTilt : MonoBehaviour
     public GameObject colliderWingtipRight;
     public GameObject colliderWingtipLeft;
 
+    public GameObject colliderWingslatRight;
+    public GameObject colliderWingslatRight2;
+    public GameObject colliderWingslatLeft;
+    public GameObject colliderWingslatLeft2;
+
+
     void Start()
     {
         currentTilt = transform.localRotation;
@@ -35,7 +41,10 @@ public class ShipBankTilt : MonoBehaviour
         // ease the hitbox while dodging
         colliderWingtipRight.SetActive(false);
         colliderWingtipLeft.SetActive(false);
-
+        colliderWingslatRight.SetActive(false);
+        colliderWingslatRight2.SetActive(false);
+        colliderWingslatLeft.SetActive(false);
+        colliderWingslatLeft2.SetActive(false);
     }
 
 
@@ -70,6 +79,10 @@ public class ShipBankTilt : MonoBehaviour
         if(!isRolling){
             colliderWingtipRight.SetActive(true);
             colliderWingtipLeft.SetActive(true);
+            colliderWingslatRight.SetActive(true);
+            colliderWingslatRight2.SetActive(true);
+            colliderWingslatLeft.SetActive(true);
+            colliderWingslatLeft2.SetActive(true);
         }
 
 

@@ -5,7 +5,7 @@ public class Rock : MonoBehaviour
     public float speed = 30f;
     public float speedMult = 1.2f;
     public float diffTimeInterval = 1f;
-    public float maxSpeed = 300f;
+    public float maxSpeed = 500f;
 
     private float timer = 0f;
 
@@ -56,7 +56,6 @@ public class Rock : MonoBehaviour
     }
 
     // really basic difficulty scaler for rock speed
-    // TODO: increase rock spawn rate along with rock speed
     private void UpdateRockSpeed()
     {
         timer += Time.deltaTime;
